@@ -21,7 +21,6 @@ const (
 	callDepth  = 2
 )
 
-//------------------------------------------------------------------------------------------------------------
 // simple l that use log package
 type loggerAdaptorNative struct {
 	slf4go.LoggerAdaptor
