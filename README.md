@@ -1,3 +1,8 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/aellwein/slf4go-native-adaptor)](https://goreportcard.com/report/github.com/aellwein/slf4go-native-adaptor)
+[![Coverage Status](https://img.shields.io/coveralls/github/aellwein/slf4go-native-adaptor/master.svg)](https://coveralls.io/github/aellwein/slf4go-native-adaptor?branch=master)
+[![Build Status](https://img.shields.io/travis/aellwein/slf4go-native-adaptor/master.svg)](https://travis-ci.org/aellwein/slf4go-native-adaptor) 
+
+
 # Native adaptor for SLF4GO
 
 This is a simplest adaptor implementation for 
