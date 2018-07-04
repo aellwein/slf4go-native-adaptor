@@ -1,8 +1,8 @@
 package slf4go_native_adaptor
 
 import (
-	"testing"
 	"github.com/aellwein/slf4go"
+	"testing"
 )
 
 func TestGetLogger(t *testing.T) {
