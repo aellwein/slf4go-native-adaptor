@@ -18,7 +18,7 @@ const (
 	levelError = "ERROR"
 	levelFatal = "FATAL"
 	levelPanic = "PANIC"
-	call_depth = 2
+	callDepth  = 2
 )
 
 //------------------------------------------------------------------------------------------------------------
@@ -42,77 +42,77 @@ func newNativeLogger(name string) *loggerAdaptorNative {
 func (l *loggerAdaptorNative) Trace(args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelTrace {
 		str := fmt.Sprint(args...)
-		l.output(call_depth, levelTrace, str)
+		l.output(callDepth, levelTrace, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Tracef(format string, args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelTrace {
 		str := fmt.Sprintf(format, args...)
-		l.output(call_depth, levelTrace, str)
+		l.output(callDepth, levelTrace, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Debug(args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelDebug {
 		str := fmt.Sprint(args...)
-		l.output(call_depth, levelDebug, str)
+		l.output(callDepth, levelDebug, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Debugf(format string, args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelDebug {
 		str := fmt.Sprintf(format, args...)
-		l.output(call_depth, levelDebug, str)
+		l.output(callDepth, levelDebug, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Info(args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelInfo {
 		str := fmt.Sprint(args...)
-		l.output(call_depth, levelInfo, str)
+		l.output(callDepth, levelInfo, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Infof(format string, args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelInfo {
 		str := fmt.Sprintf(format, args...)
-		l.output(call_depth, levelInfo, str)
+		l.output(callDepth, levelInfo, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Warn(args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelWarn {
 		str := fmt.Sprint(args...)
-		l.output(call_depth, levelWarn, str)
+		l.output(callDepth, levelWarn, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Warnf(format string, args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelWarn {
 		str := fmt.Sprintf(format, args...)
-		l.output(call_depth, levelWarn, str)
+		l.output(callDepth, levelWarn, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Error(args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelError {
 		str := fmt.Sprint(args...)
-		l.output(call_depth, levelError, str)
+		l.output(callDepth, levelError, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Errorf(format string, args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelError {
 		str := fmt.Sprintf(format, args...)
-		l.output(call_depth, levelError, str)
+		l.output(callDepth, levelError, str)
 	}
 }
 
 func (l *loggerAdaptorNative) Fatal(args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelFatal {
 		str := fmt.Sprint(args...)
-		l.output(call_depth, levelFatal, str)
+		l.output(callDepth, levelFatal, str)
 		os.Exit(1)
 	}
 }
@@ -120,20 +120,20 @@ func (l *loggerAdaptorNative) Fatal(args ...interface{}) {
 func (l *loggerAdaptorNative) Fatalf(format string, args ...interface{}) {
 	if l.GetLevel() <= slf4go.LevelFatal {
 		str := fmt.Sprintf(format, args...)
-		l.output(call_depth, levelFatal, str)
+		l.output(callDepth, levelFatal, str)
 		os.Exit(1)
 	}
 }
 
 func (l *loggerAdaptorNative) Panic(args ...interface{}) {
 	str := fmt.Sprint(args...)
-	l.output(call_depth, levelPanic, str)
+	l.output(callDepth, levelPanic, str)
 	panic(levelPanic)
 }
 
 func (l *loggerAdaptorNative) Panicf(format string, args ...interface{}) {
 	str := fmt.Sprintf(format, args...)
-	l.output(call_depth, levelPanic, str)
+	l.output(callDepth, levelPanic, str)
 	panic(str)
 }
 
