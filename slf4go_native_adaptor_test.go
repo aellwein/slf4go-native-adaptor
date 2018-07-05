@@ -3,25 +3,24 @@ package slf4go_native_adaptor
 import (
 	"github.com/aellwein/slf4go"
 	"testing"
+	"errors"
 )
 
 func TestGetLogger(t *testing.T) {
 	logger := slf4go.GetLogger("test")
-	logger.Trace("are you prety?", true)
-	logger.Debugf("are you prety? %t", true)
-	logger.Info("how old are you? ", nil)
-	logger.Infof("i'm %010d", 18)
-	logger.Warn("you aren't honest! ")
-	logger.Warnf("haha%02d", 1000, nil)
-	logger.Trace("set level to warn!!!!!")
-	logger.SetLevel(slf4go.LevelWarn)
-	logger.Trace("what?")
-	logger.Info("what?")
-	logger.Error("what?")
-	logger.Errorf("what?..$%s$", "XD")
+	logger.SetLevel(slf4go.LevelTrace)
+	logger.Trace("Trace")
+	logger.Tracef("Tracef: %v", logger)
+	logger.Debug("Debug")
+	logger.Debugf("Debugf: %s", "debug mode")
+	logger.Info("Info")
+	logger.Infof("Infof: %v", slf4go.GetLoggerFactory())
+	logger.Warn("Warn")
+	logger.Warnf("Warnf: %d", 42)
+	logger.Error("Error")
+	logger.Errorf("Errorf: %v", errors.New("some error"))
 
 	// will actually exit and break the test
-
 	//logger.Fatalf("import cycle not allowed! %s", "shit...")
 	//logger.Fatal("never reach here")
 }
@@ -74,5 +73,11 @@ func BenchmarkLoggerNotCheckEnable(b *testing.B) {
 	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
 		logger.Tracef("this is a test, b: %v, ", b)
+	}
+}
+
+func TestSetLoggingParameters(t *testing.T) {
+	if nil != slf4go.GetLoggerFactory().SetLoggingParameters(slf4go.LoggingParameters{}) {
+		t.Error("expected no error")
 	}
 }

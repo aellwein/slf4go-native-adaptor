@@ -30,3 +30,8 @@ Note the underscore in front of the import of the SLF4GO adaptor.
  
 You can change the logger implementation anytime, without changing the facade you
 are using, only by changing the imported adaptor.
+
+
+## Logging parameters
+
+None supported.

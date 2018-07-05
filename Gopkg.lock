@@ -4,8 +4,8 @@
 [[projects]]
   name = "github.com/aellwein/slf4go"
   packages = ["."]
-  revision = "18aa766a93f351a4ab2644feb6b5dfb7051385a3"
-  version = "v0.1"
+  revision = "55c731e170cd266f95645cf2e6fcee7718234e07"
+  version = "v0.2"
 
 [solve-meta]
   analyzer-name = "dep"

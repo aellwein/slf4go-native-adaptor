@@ -170,3 +170,8 @@ func newNativeLoggerFactory() slf4go.LoggerFactory {
 func (factory *nativeLoggerFactory) GetLogger(name string) slf4go.Logger {
 	return newNativeLogger(name)
 }
+
+func (*nativeLoggerFactory) SetLoggingParameters(params slf4go.LoggingParameters) error {
+	// for the native adaptor, currently no parameters are supported.
+	return nil
+}
