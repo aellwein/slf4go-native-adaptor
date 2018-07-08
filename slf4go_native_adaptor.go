@@ -21,21 +21,10 @@ const (
 	callDepth  = 2
 )
 
-// simple l that use log package
 type loggerAdaptorNative struct {
 	slf4go.LoggerAdaptor
 	tf   string
 	flag int
-}
-
-// it should be private
-func newNativeLogger(name string) *loggerAdaptorNative {
-	logger := new(loggerAdaptorNative)
-	logger.SetName(name)
-	logger.SetLevel(slf4go.LevelDebug)
-	logger.tf = "2006-01-02 15:04:05.999"
-	logger.flag = log.Ldate | log.Ltime | log.Lmicroseconds | log.Lshortfile
-	return logger
 }
 
 func (l *loggerAdaptorNative) Trace(args ...interface{}) {
@@ -157,21 +146,39 @@ func (l *loggerAdaptorNative) output(calldepth int, level, s string) error {
 	return err
 }
 
-//------------------------------------------------------------------------------------------------------------
-// factory
+// native logger factory implementation
 type nativeLoggerFactory struct {
+	level slf4go.LogLevel
 }
 
 func newNativeLoggerFactory() slf4go.LoggerFactory {
-	factory := &nativeLoggerFactory{}
+	factory := &nativeLoggerFactory{level: slf4go.LevelInfo}
 	return factory
 }
 
-func (factory *nativeLoggerFactory) GetLogger(name string) slf4go.Logger {
-	return newNativeLogger(name)
+// it should be private
+func newNativeLogger(name string, lvl slf4go.LogLevel) *loggerAdaptorNative {
+	logger := new(loggerAdaptorNative)
+	logger.SetName(name)
+	logger.SetLevel(lvl)
+	logger.tf = "2006-01-02 15:04:05.999"
+	logger.flag = log.Ldate | log.Ltime | log.Lmicroseconds | log.Lshortfile
+	return logger
+}
+
+func (f *nativeLoggerFactory) GetLogger(name string) slf4go.Logger {
+	return newNativeLogger(name, f.level)
 }
 
 func (*nativeLoggerFactory) SetLoggingParameters(params slf4go.LoggingParameters) error {
 	// for the native adaptor, currently no parameters are supported.
 	return nil
+}
+
+func (f *nativeLoggerFactory) SetDefaultLogLevel(lvl slf4go.LogLevel) {
+	f.level = lvl
+}
+
+func (f *nativeLoggerFactory) GetDefaultLogLevel() slf4go.LogLevel {
+	return f.level
 }
