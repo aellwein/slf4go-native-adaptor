@@ -4,9 +4,9 @@ import (
 	"errors"
 	"github.com/aellwein/slf4go"
 	"github.com/bouk/monkey"
+	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
-	"github.com/stretchr/testify/assert"
 )
 
 func TestGetLogger(t *testing.T) {
