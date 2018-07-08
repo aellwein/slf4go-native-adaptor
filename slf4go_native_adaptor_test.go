@@ -4,9 +4,9 @@ import (
 	"errors"
 	"github.com/aellwein/slf4go"
 	"github.com/bouk/monkey"
-	"github.com/smartystreets/assertions"
 	"os"
 	"testing"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetLogger(t *testing.T) {
@@ -49,7 +49,7 @@ func TestLoggerFatal(t *testing.T) {
 		logger.Fatal("fatality!")
 	}
 
-	assertions.ShouldPanic(underTest)
+	assert.Panics(t, underTest, "should panic")
 }
 
 func TestLoggerFatalf(t *testing.T) {
@@ -63,8 +63,7 @@ func TestLoggerFatalf(t *testing.T) {
 	underTest := func() {
 		logger.Fatalf("fatality: %d", 42)
 	}
-
-	assertions.ShouldPanic(underTest)
+	assert.Panics(t, underTest, "should panic")
 }
 
 func TestLoggerPanic(t *testing.T) {
@@ -88,7 +87,20 @@ func TestLoggerPanicf(t *testing.T) {
 }
 
 func TestSetLoggingParameters(t *testing.T) {
-	if nil != slf4go.GetLoggerFactory().SetLoggingParameters(slf4go.LoggingParameters{}) {
-		t.Error("expected no error")
+	assert.Nil(t, slf4go.GetLoggerFactory().SetLoggingParameters(slf4go.LoggingParameters{}))
+}
+
+func TestNativeLoggerFactory_GetDefaultLogLevel(t *testing.T) {
+	if slf4go.GetLoggerFactory().GetDefaultLogLevel() != slf4go.LevelInfo {
+		t.Errorf("default log level should be %v", levelInfo)
+	}
+}
+
+func TestNativeLoggerFactory_SetDefaultLogLevel(t *testing.T) {
+	slf4go.GetLoggerFactory().SetDefaultLogLevel(slf4go.LevelTrace)
+
+	logger := slf4go.GetLogger("test")
+	if !logger.IsTraceEnabled() {
+		t.Error("TRACE should be enabled")
 	}
 }
