@@ -91,16 +91,11 @@ func TestSetLoggingParameters(t *testing.T) {
 }
 
 func TestNativeLoggerFactory_GetDefaultLogLevel(t *testing.T) {
-	if slf4go.GetLoggerFactory().GetDefaultLogLevel() != slf4go.LevelInfo {
-		t.Errorf("default log level should be %v", levelInfo)
-	}
+	assert.Equal(t, slf4go.GetLoggerFactory().GetDefaultLogLevel(), slf4go.LevelInfo)
 }
 
 func TestNativeLoggerFactory_SetDefaultLogLevel(t *testing.T) {
 	slf4go.GetLoggerFactory().SetDefaultLogLevel(slf4go.LevelTrace)
-
 	logger := slf4go.GetLogger("test")
-	if !logger.IsTraceEnabled() {
-		t.Error("TRACE should be enabled")
-	}
+	assert.True(t, logger.IsTraceEnabled())
 }
