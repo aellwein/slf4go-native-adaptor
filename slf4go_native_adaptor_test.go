@@ -2,11 +2,12 @@ package slf4go_native_adaptor
 
 import (
 	"errors"
+	"os"
+	"testing"
+
 	"github.com/aellwein/slf4go"
 	"github.com/bouk/monkey"
 	"github.com/stretchr/testify/assert"
-	"os"
-	"testing"
 )
 
 func TestGetLogger(t *testing.T) {

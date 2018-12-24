@@ -2,12 +2,13 @@ package slf4go_native_adaptor
 
 import (
 	"fmt"
-	"github.com/aellwein/slf4go"
 	"log"
 	"os"
 	"runtime"
 	"strings"
 	"time"
+
+	"github.com/aellwein/slf4go"
 )
 
 const (
