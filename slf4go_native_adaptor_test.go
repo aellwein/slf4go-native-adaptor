@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
+	"bou.ke/monkey"
 	"github.com/aellwein/slf4go"
-	"github.com/bouk/monkey"
 	"github.com/stretchr/testify/assert"
 )
 

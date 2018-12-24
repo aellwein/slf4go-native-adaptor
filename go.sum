@@ -1,3 +1,5 @@
+bou.ke/monkey v1.0.1 h1:zEMLInw9xvNakzUUPjfS4Ds6jYPqCFx3m7bRmG5NH2U=
+bou.ke/monkey v1.0.1/go.mod h1:FgHuK96Rv2Nlf+0u1OOVDpCMdsWyOFmeeketDHE7LIg=
 github.com/aellwein/slf4go v0.4.1 h1:hrMfjov4vkVXkQoi98fnsc5I0CIMnQMm9ya0atpifys=
 github.com/aellwein/slf4go v0.4.1/go.mod h1:BDA6u1AXW2aHG9CVhsl42QTMSMVJnjiPS/hvpWK8TNU=
 github.com/bouk/monkey v1.0.1 h1:82kWEtyEjyfkRZb0DaQ5+7O5dJfe3GzF/o97+yUo5d0=

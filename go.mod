@@ -1,6 +1,7 @@
 module github.com/aellwein/slf4go-native-adaptor
 
 require (
+	bou.ke/monkey v1.0.1
 	github.com/aellwein/slf4go v0.4.1
 	github.com/bouk/monkey v1.0.1
 	github.com/davecgh/go-spew v1.1.1 // indirect
